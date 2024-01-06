@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  flow:
+    container_name: flow
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./tmp:/usr/src/app/tmp
+      - ./uploads:/usr/src/app/uploads
+    ports:
+      - "3035:3035"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "5"
